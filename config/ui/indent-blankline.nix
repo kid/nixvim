@@ -3,6 +3,12 @@
     enable = true;
     settings = {
       scope.enabled = true;
+      exclude = {
+        filetypes = [
+          ""
+          "dashboard"
+        ];
+      };
     };
   };
 }

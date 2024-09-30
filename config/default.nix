@@ -125,5 +125,7 @@
   plugins.todo-comments.enable = true;
   plugins.nvim-surround.enable = true;
   plugins.nvim-autopairs.enable = true;
+  plugins.dashboard.enable = true;
+  plugins.noice.enable = true;
   # TODO: tabout.nvim
 }
