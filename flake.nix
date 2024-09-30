@@ -9,6 +9,7 @@
     treefmt-nix.inputs.nixpkgs.follows = "nixpkgs";
     devenv.url = "github:cachix/devenv";
     devenv.inputs.nixpkgs.follows = "nixpkgs";
+    stylix.url = "github:danth/stylix";
   };
 
   outputs =
@@ -18,12 +19,7 @@
         inputs.treefmt-nix.flakeModule
         inputs.devenv.flakeModule
       ];
-      systems = [
-        "x86_64-linux"
-        "aarch64-linux"
-        "x86_64-darwin"
-        "aarch64-darwin"
-      ];
+      systems = inputs.nixpkgs.lib.systems.flakeExposed;
 
       perSystem =
         {
@@ -57,7 +53,9 @@
           };
 
           devenv.shells.default = {
-            packages = [ config.treefmt.build.wrapper ];
+            packages = [
+              config.treefmt.build.wrapper
+            ];
 
             # inputsFrom = [
             # config.treefmt.build.shevShell
