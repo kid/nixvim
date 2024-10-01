@@ -6,11 +6,6 @@
 }:
 {
   plugins = {
-    conform-nvim.settings = lib.mkIf config.plugins.conform-nvim.enable {
-      formatters_by_ft.nix = [ "nixfmt" ];
-      formatters.nixfmt.command = lib.getExe pkgs.nixfmt-rfc-style;
-    };
-
     lsp.servers = {
       nil-ls.enable = true;
       nixd.enable = true;
