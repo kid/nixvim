@@ -54,7 +54,7 @@
       key = "<leader>ld";
       action = "<cmd>Lspsaga show_line_diagnostics<CR>";
       options = {
-        desc = "Code Action";
+        desc = "Show line diagnostics";
         silent = true;
       };
     }
@@ -63,7 +63,7 @@
       key = "[d";
       action = "<cmd>Lspsaga diagnostic_jump_prev<CR>";
       options = {
-        desc = "Code Action";
+        desc = "Previous diagnostic";
         silent = true;
       };
     }
@@ -72,7 +72,7 @@
       key = "]d";
       action = "<cmd>Lspsaga diagnostic_jump_next<CR>";
       options = {
-        desc = "Code Action";
+        desc = "Next diagnostic";
         silent = true;
       };
     }

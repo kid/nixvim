@@ -3,16 +3,11 @@
   plugins.lsp = {
     enable = true;
     servers = {
-      nil-ls.enable = true;
-      nixd.enable = true;
-      jsonls.enable = true;
-      yamlls.enable = true;
-      gopls = {
-        enable = true;
-        goPackage = pkgs.go_1_23;
-      };
+      # jsonls.enable = true;
+      # yamlls.enable = true;
+      # helm-ls.enable = true;
       # golangci-lint-ls.enable = true;
-      terraformls.enable = true;
+      # terraformls.enable = true;
     };
     # keymaps = {
     #   lspBuf = {
@@ -22,5 +17,4 @@
     #   };
     # };
   };
-  plugins.lsp-format.enable = true;
 }

@@ -1,3 +1,12 @@
+let
+  commonMappings = {
+    "<C-n>" = "cmp.mapping.select_next_item({ behavior = cmp.SelectBehavior.Select })";
+    "<C-p>" = "cmp.mapping.select_prev_item({ behavior = cmp.SelectBehavior.Select })";
+    "<C-y>" = "cmp.mapping.confirm({ select = true, behavior = cmp.ConfirmBehavior.Replace })";
+    "<C-S-y>" = "cmp.mapping.confirm({ select = true })";
+    "<C-Space>" = "cmp.mapping.complete()";
+  };
+in
 {
   plugins = {
     cmp = {
@@ -14,19 +23,16 @@
         sources = [
           { name = "nvim_lsp"; }
           { name = "nvim_lsp_signature_help"; }
+          { name = "luasnip"; }
           { name = "buffer"; }
-          { name = "copilot"; }
           { name = "path"; }
           { name = "luasnip"; }
           { name = "nvim_lua"; }
+          { name = "copilot"; }
         ];
 
-        mapping = {
-          "<C-n>" = "cmp.mapping.select_next_item({ behavior = cmp.SelectBehavior.Select })";
-          "<C-p>" = "cmp.mapping.select_prev_item({ behavior = cmp.SelectBehavior.Select })";
-          "<C-y>" = "cmp.mapping.confirm({ select = true, behavior = cmp.ConfirmBehavior.Replace })";
-          "<C-S-y>" = "cmp.mapping.confirm({ select = true })";
-          "<C-Space>" = "cmp.mapping.complete()";
+        mapping = commonMappings // {
+
           "<C-l>" = ''
             cmp.mapping(function(fallback)
               local luasnip = require("luasnip")
@@ -57,34 +63,22 @@
         #     border = "solid";
         #   };
         # };
+      };
 
-        cmdline = {
-          "/" = {
-            mapping = {
-              __raw = "cmp.mapping.preset.cmdline()";
-              # "<C-n>" = "cmp.mapping.select_next_item()";
-              # "<C-p>" = "cmp.mapping.select_prev_item()";
-              # # "<C-e>" = "cmp.mapping.close()";
-              # "<C-y>" = "cmp.mapping.confirm({ select = true, behavior = cmp.ConfirmBehavior.Replace })";
-              # "<C-S-y>" = "cmp.mapping.confirm({ select = true })";
-              # "<C-Space>" = "cmp.mapping.complete()";
-            };
-            sources = {
-              name = "buffer";
-            };
-          };
-          ":" = {
-            mapping = {
-              __raw = "cmp.mapping.preset.cmdline()";
-            };
-            sources = [
-              { name = "path"; }
-              { name = "cmdline"; }
-              { name = "cmdline_history"; }
-              { name = "buffer"; }
-              { name = "nvim_lsp_document_symbol"; }
-            ];
-          };
+      cmdline = {
+        "/" = {
+          mapping = commonMappings;
+          sources = [ { name = "buffer"; } ];
+        };
+        ":" = {
+          mapping = commonMappings;
+          sources = [
+            { name = "path"; }
+            { name = "cmdline"; }
+            { name = "cmdline_history"; }
+            { name = "buffer"; }
+            { name = "nvim_lsp_document_symbol"; }
+          ];
         };
       };
     };

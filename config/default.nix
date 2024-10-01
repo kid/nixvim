@@ -9,14 +9,25 @@
     ./completion/lspkind.nix
     ./completion/luasnip.nix
 
+    ./git/diffview.nix
+    ./git/gitsigns.nix
+    ./git/neogit.nix
+
     ./lsp/lsp.nix
+    ./lsp/lsp-format.nix
     ./lsp/lspsaga.nix
     ./lsp/none-ls.nix
     ./lsp/trouble.nix
 
+    ./coding/nix.nix
+    ./coding/js.nix
+    ./coding/go.nix
+
     ./treesitter.nix
 
+    ./ui/bufferline.nix
     ./ui/indent-blankline.nix
+    ./ui/flash.nix
     ./ui/smart-splits.nix
     ./ui/telescope.nix
     ./ui/which-key.nix
@@ -94,38 +105,38 @@
 
     showmode = false;
 
+    # Reduce which-key timeout
+    timeoutlen = 10;
+
     # Global status bar for all windows
     laststatus = 3;
   };
 
   globals = {
     mapleader = " ";
-
   };
 
   colorschemes.base16.enable = true;
   colorschemes.base16.colorscheme = "gruvbox-dark-medium";
 
   plugins.lualine.enable = true;
-  plugins.bufferline.enable = true;
   plugins.web-devicons.enable = true;
   plugins.schemastore = {
     enable = true;
     json.enable = true;
     yaml.enable = true;
   };
-  plugins.gitsigns.enable = true;
-  plugins.gitsigns.settings.trouble = true;
-  plugins.neogit.enable = true;
-  plugins.diffview.enable = true;
   plugins.neo-tree.enable = true;
   plugins.neo-tree.filesystem.followCurrentFile.enabled = true;
   plugins.neo-tree.filesystem.followCurrentFile.leaveDirsOpen = true;
+
   plugins.comment.enable = true;
   plugins.todo-comments.enable = true;
   plugins.nvim-surround.enable = true;
   plugins.nvim-autopairs.enable = true;
   plugins.dashboard.enable = true;
   plugins.noice.enable = true;
+  # plugins.notify.enable = true;
+  plugins.helm.enable = true;
   # TODO: tabout.nvim
 }
