@@ -22,6 +22,7 @@
     ./coding/nix.nix
     ./coding/js.nix
     ./coding/go.nix
+    ./coding/terraform.nix
 
     ./treesitter.nix
 

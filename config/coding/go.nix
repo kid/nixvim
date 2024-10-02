@@ -6,6 +6,8 @@
 }:
 {
   plugins = {
+    # TODO: enable golangci-lint-ls?
+
     lsp.servers.gopls = {
       enable = true;
       goPackage = pkgs.go_1_23;
