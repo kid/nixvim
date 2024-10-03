@@ -1,3 +1,4 @@
+{ config, lib, ... }:
 {
   plugins.telescope = {
     enable = true;
@@ -11,22 +12,18 @@
     };
   };
 
-  keymaps = [
+  keymaps = lib.mkIf config.plugins.telescope.enable [
     {
       mode = "n";
       key = "<leader>ff";
       action = "<cmd>Telescope git_files<cr>";
-      options = {
-        desc = "Find files";
-      };
+      options.desc = "Find files";
     }
     {
       mode = "n";
       key = "<leader>fs";
       action = "<cmd>Telescope live_grep<cr>";
-      options = {
-        desc = "Live grep";
-      };
+      options.desc = "Live grep";
     }
   ];
 }

@@ -1,11 +1,6 @@
+{ lib, ... }:
 let
-  commonMappings = {
-    "<C-n>" = "cmp.mapping.select_next_item({ behavior = cmp.SelectBehavior.Select })";
-    "<C-p>" = "cmp.mapping.select_prev_item({ behavior = cmp.SelectBehavior.Select })";
-    "<C-y>" = "cmp.mapping.confirm({ select = true, behavior = cmp.ConfirmBehavior.Replace })";
-    "<C-S-y>" = "cmp.mapping.confirm({ select = true })";
-    "<C-Space>" = "cmp.mapping.complete()";
-  };
+  helpers = lib.nixvim;
 in
 {
   plugins = {
@@ -15,77 +10,100 @@ in
         autoEnableSources = false;
 
         experimental = {
-          ghost_text = true;
+          ghost_text = false;
         };
 
-        snippet.expand = "luasnip";
+        snippet.expand = ''
+          function(args)
+            require('luasnip').lsp_expand(args.body)
+          end
+        '';
 
         sources = [
           { name = "nvim_lsp"; }
-          { name = "nvim_lsp_signature_help"; }
+          # { name = "nvim_lsp_signature_help"; }
           { name = "luasnip"; }
           { name = "buffer"; }
           { name = "path"; }
-          { name = "luasnip"; }
+          { name = "emoji"; }
           { name = "nvim_lua"; }
           { name = "copilot"; }
         ];
 
-        mapping = commonMappings // {
-
-          "<C-l>" = ''
-            cmp.mapping(function(fallback)
+        mapping = helpers.mkRaw ''
+          cmp.mapping.preset.insert({
+            ["<C-y>"] = {
+              i = cmp.mapping.confirm({ select = true }),
+            },
+            ["<C-l>"] = cmp.mapping(function(fallback)
               local luasnip = require("luasnip")
               if luasnip.locally_jumpable(1) then
                 luasnip.jump(1)
               else
                 fallback()
               end
-            end, { "i", "s" })
-          '';
-          "<C-h>" = ''
-            cmp.mapping(function(fallback)
+            end, { "i", "s" }),
+            ["<C-h>"] = cmp.mapping(function(fallback)
               local luasnip = require("luasnip")
               if luasnip.locally_jumpable(-1) then
                 luasnip.jump(-1)
               else
                 fallback()
               end
-            end, { "i", "s" })
-          '';
-        };
+            end, { "i", "s" }),
+          })
+        '';
 
         # window = {
         #   completion = {
-        #     border = "solid";
+        #     scrollbar = false;
+        #     side_padding = 1;
+        #     winhighlight = "Normal:CmpPmenu,CursorLine:CmpSel,Search:None,FloatBorder:CmpBorder";
+        #     border = "none";
+        #   };
+        #
+        #   documentation = {
+        #     border = "single";
+        #     winhighlight = "Normal:CmpDoc,FloatBorder:CmpDocBorder";
+        #   };
+        # };
+
+        # window = {
+        #   completion = {
+        #     border = "single";
         #   };
         #   documentation = {
-        #     border = "solid";
+        #     border = "single";
         #   };
         # };
       };
 
       cmdline = {
         "/" = {
-          mapping = commonMappings;
+          mapping = helpers.mkRaw "cmp.mapping.preset.cmdline()";
+          sources = [ { name = "buffer"; } ];
+        };
+        "?" = {
+          mapping = helpers.mkRaw "cmp.mapping.preset.cmdline()";
           sources = [ { name = "buffer"; } ];
         };
         ":" = {
-          mapping = commonMappings;
+          mapping = helpers.mkRaw "cmp.mapping.preset.cmdline()";
           sources = [
             { name = "path"; }
             { name = "cmdline"; }
             { name = "cmdline_history"; }
             { name = "buffer"; }
-            { name = "nvim_lsp_document_symbol"; }
+            # { name = "nvim_lsp_document_symbol"; }
           ];
         };
       };
     };
 
+    cmp-emoji.enable = true;
     cmp-nvim-lsp.enable = true;
-    cmp-nvim-lsp-document-symbol.enable = true;
-    cmp-nvim-lsp-signature-help.enable = true;
+    # cmp-nvim-lsp-document-symbol.enable = true;
+    # cmp-nvim-lsp-signature-help.enable = true;
     cmp-nvim-lua.enable = true;
     cmp-path.enable = true;
     cmp-buffer.enable = true;

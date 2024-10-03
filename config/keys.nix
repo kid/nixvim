@@ -2,11 +2,11 @@
   globals.mapleader = " ";
 
   keymaps = [
-    {
-      mode = "i";
-      key = "jk";
-      action = "<ESC>";
-    }
+    # {
+    #   mode = "i";
+    #   key = "jk";
+    #   action = "<ESC>";
+    # }
     {
       mode = [
         "n"
@@ -22,11 +22,6 @@
       options = {
         desc = "Neogit";
       };
-    }
-    {
-      mode = "n";
-      key = "<leader>e";
-      action = "<cmd>Neotree toggle<cr>";
     }
     {
       mode = "n";

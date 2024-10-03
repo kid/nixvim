@@ -1,7 +1,8 @@
+{ config, lib, ... }:
 {
   plugins.flash.enable = true;
 
-  keymaps = [
+  keymaps = lib.mkIf config.plugins.flash.enable [
     {
       mode = [
         "n"
@@ -14,18 +15,19 @@
         desc = "Flash";
       };
     }
-    {
-      mode = [
-        "n"
-        "x"
-        "o"
-      ];
-      key = "S";
-      action = "<cmd>lua require('flash').treesitter()<cr>";
-      options = {
-        desc = "Flash Treesitter";
-      };
-    }
+    # FIXME: conflict with nvim-surround C-s in visual 🤔 
+    # {
+    #   mode = [
+    #     "n"
+    #     "x"
+    #     "o"
+    #   ];
+    #   key = "S";
+    #   action = "<cmd>lua require('flash').treesitter()<cr>";
+    #   options = {
+    #     desc = "Flash Treesitter";
+    #   };
+    # }
     {
       mode = "o";
       key = "r";

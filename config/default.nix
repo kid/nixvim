@@ -28,6 +28,7 @@
 
     ./ui/bufferline.nix
     ./ui/indent-blankline.nix
+    ./ui/neo-tree.nix
     ./ui/flash.nix
     ./ui/smart-splits.nix
     ./ui/telescope.nix
@@ -62,7 +63,7 @@
     breakindent = true;
 
     # Incremental searching
-    hlsearch = true;
+    hlsearch = false;
     incsearch = true;
 
     # Enable text wrap
@@ -122,15 +123,11 @@
 
   plugins.lualine.enable = true;
   plugins.web-devicons.enable = true;
-  plugins.schemastore = {
-    enable = true;
-    json.enable = true;
-    yaml.enable = true;
-  };
-  plugins.neo-tree.enable = true;
-  plugins.neo-tree.filesystem.followCurrentFile.enabled = true;
-  plugins.neo-tree.filesystem.followCurrentFile.leaveDirsOpen = true;
-
+  # plugins.schemastore = {
+  #   enable = true;
+  #   json.enable = true;
+  #   yaml.enable = true;
+  # };
   plugins.comment.enable = true;
   plugins.todo-comments.enable = true;
   plugins.nvim-surround.enable = true;
@@ -140,4 +137,5 @@
   # plugins.notify.enable = true;
   plugins.helm.enable = true;
   # TODO: tabout.nvim
+  plugins.better-escape.enable = true;
 }

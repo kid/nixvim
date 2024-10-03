@@ -17,4 +17,16 @@
     #   };
     # };
   };
+
+  diagnostics = {
+    virtual_text.prefix = "";
+    signs.text = [
+      "󰅙"
+      ""
+      "󰋼"
+      "󰌵"
+    ];
+    underline = true;
+    float.border = "single";
+  };
 }
