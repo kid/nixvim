@@ -19,9 +19,10 @@
     ./lsp/none-ls.nix
     ./lsp/trouble.nix
 
-    ./coding/nix.nix
     ./coding/js.nix
     ./coding/go.nix
+    ./coding/nix.nix
+    ./coding/rust.nix
     ./coding/terraform.nix
 
     ./treesitter.nix
