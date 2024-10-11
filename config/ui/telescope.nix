@@ -25,5 +25,17 @@
       action = "<cmd>Telescope live_grep<cr>";
       options.desc = "Live grep";
     }
+    {
+      mode = "n";
+      key = "<leader>fb";
+      action = "<cmd>Telescope buffers<cr>";
+      options.desc = "Buffers";
+    }
+    {
+      mode = "n";
+      key = "<leader>fh";
+      action = "<cmd>Telescope help_tags<cr>";
+      options.desc = "Help tags";
+    }
   ];
 }
