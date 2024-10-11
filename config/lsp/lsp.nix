@@ -1,7 +1,7 @@
-{ pkgs, ... }:
 {
   plugins.lsp = {
     enable = true;
+    inlayHints = true;
     servers = {
       # jsonls.enable = true;
       # yamlls.enable = true;
