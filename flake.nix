@@ -17,6 +17,16 @@
     flake-parts.lib.mkFlake { inherit inputs; } {
       debug = true;
       systems = inputs.nixpkgs.lib.systems.flakeExposed;
+      flake = {
+        homeManagerModules = {
+          nixvim = nixvim.homeManagerModules.nixvim;
+          config =
+            { ... }:
+            {
+              programs.nixvim = import ./config;
+            };
+        };
+      };
       perSystem =
         { pkgs, system, ... }:
         let
