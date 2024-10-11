@@ -1,7 +1,7 @@
-{ pkgs, ... }:
+{ config, pkgs, ... }:
 {
   plugins.luasnip = {
-    enable = true;
+    enable = config.plugins.cmp.enable;
     settings = {
       enable_autosnippets = true;
     };

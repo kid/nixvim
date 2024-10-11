@@ -7,6 +7,7 @@
     ./completion/blink-cmp.nix
     ./completion/cmp.nix
     ./completion/copilot.nix
+    ./completion/friendly-snippets.nix
     ./completion/lspkind.nix
     ./completion/luasnip.nix
 
