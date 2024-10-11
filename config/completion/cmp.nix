@@ -1,11 +1,11 @@
-{ lib, ... }:
+{ config, lib, ... }:
 let
   helpers = lib.nixvim;
 in
 {
   plugins = {
     cmp = {
-      enable = true;
+      enable = false;
       settings = {
         autoEnableSources = false;
 
@@ -100,15 +100,15 @@ in
       };
     };
 
-    cmp-emoji.enable = true;
-    cmp-nvim-lsp.enable = true;
-    # cmp-nvim-lsp-document-symbol.enable = true;
-    # cmp-nvim-lsp-signature-help.enable = true;
-    cmp-nvim-lua.enable = true;
-    cmp-path.enable = true;
-    cmp-buffer.enable = true;
-    cmp-cmdline.enable = true;
-    cmp-cmdline-history.enable = true;
-    cmp_luasnip.enable = true;
+    cmp-emoji.enable = config.plugins.cmp.enable;
+    cmp-nvim-lsp.enable = config.plugins.cmp.enable;
+    # cmp-nvim-lsp-document-symbol.enable = config.plugins.cmp.enable;
+    # cmp-nvim-lsp-signature-help.enable = config.plugins.cmp.enable;
+    cmp-nvim-lua.enable = config.plugins.cmp.enable;
+    cmp-path.enable = config.plugins.cmp.enable;
+    cmp-buffer.enable = config.plugins.cmp.enable;
+    cmp-cmdline.enable = config.plugins.cmp.enable;
+    cmp-cmdline-history.enable = config.plugins.cmp.enable;
+    cmp_luasnip.enable = config.plugins.cmp.enable;
   };
 }

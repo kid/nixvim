@@ -1,11 +1,12 @@
+{ config, ... }:
 {
   plugins.copilot-lua = {
     enable = true;
     panel.enabled = false;
-    suggestion.enabled = false;
+    suggestion.enabled = !config.plugins.cmp.enable;
   };
 
   plugins.copilot-cmp = {
-    enable = true;
+    enable = config.plugins.cmp.enable;
   };
 }

@@ -7,6 +7,9 @@
 
     nixvim.url = "github:nix-community/nixvim";
     nixvim.inputs.nixpkgs.follows = "nixpkgs";
+
+    blink-cmp.url = "github:kid/blink.cmp/working";
+    blink-cmp.inputs.nixpkgs.follows = "nixpkgs";
   };
 
   outputs =
