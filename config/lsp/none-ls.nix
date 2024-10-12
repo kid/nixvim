@@ -6,7 +6,7 @@
     sources = {
       code_actions = {
         # gitsigns.enable = lib.mkIf config.plugins.gitsigns.enable true;
-        gitsigns.enable = true;
+        # gitsigns.enable = true;
       };
       #   diagnostics = {
       #     yamllint.enable = true;

@@ -1,10 +1,17 @@
+self:
+{ lib, ... }:
 {
+  _module.args = {
+    localFlake = self;
+  };
+
   # Import all your configuration modules here
   imports = [
     ./keys.nix
     ./autocommands.nix
 
     ./completion/blink-cmp.nix
+    ./completion/friendly-snippets.nix
     ./completion/cmp.nix
     ./completion/copilot.nix
     ./completion/friendly-snippets.nix
@@ -121,8 +128,8 @@
     mapleader = " ";
   };
 
-  colorschemes.base16.enable = true;
-  colorschemes.base16.colorscheme = "gruvbox-dark-medium";
+  colorschemes.base16.enable = lib.mkDefault true;
+  colorschemes.base16.colorscheme = lib.mkDefault "gruvbox-dark-medium";
 
   plugins.lualine.enable = true;
   plugins.web-devicons.enable = true;
@@ -137,6 +144,7 @@
   plugins.nvim-autopairs.enable = true;
   plugins.dashboard.enable = true;
   plugins.noice.enable = true;
+  plugins.noice.lsp.signature.enabled = false;
   # plugins.notify.enable = true;
   plugins.helm.enable = true;
   # TODO: tabout.nvim

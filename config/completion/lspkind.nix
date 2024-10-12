@@ -1,6 +1,7 @@
+{ config, ... }:
 {
   plugins.lspkind = {
-    enable = true;
+    enable = config.plugins.cmp.enable;
     cmp = {
       enable = true;
       maxWidth = 50;
