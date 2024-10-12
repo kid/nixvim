@@ -119,7 +119,7 @@ self:
     showmode = false;
 
     # Reduce which-key timeout
-    timeoutlen = 10;
+    timeoutlen = 100;
 
     # Global status bar for all windows
     laststatus = 3;
