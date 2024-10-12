@@ -39,6 +39,7 @@ self:
     ./ui/bufferline.nix
     ./ui/indent-blankline.nix
     ./ui/neo-tree.nix
+    ./ui/noice.nix
     ./ui/flash.nix
     ./ui/smart-splits.nix
     ./ui/telescope.nix
@@ -143,8 +144,7 @@ self:
   plugins.nvim-surround.enable = true;
   plugins.nvim-autopairs.enable = true;
   plugins.dashboard.enable = true;
-  plugins.noice.enable = true;
-  plugins.noice.lsp.signature.enabled = false;
+
   # plugins.notify.enable = true;
   plugins.helm.enable = true;
   # TODO: tabout.nvim
