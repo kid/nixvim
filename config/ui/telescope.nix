@@ -10,6 +10,15 @@
         enable = true;
       };
     };
+    settings = {
+      extensions = {
+        ui-select = lib.nixvim.mkRaw ''
+          {
+            require('telescope.themes').get_dropdown()
+          }
+        '';
+      };
+    };
   };
 
   keymaps = lib.mkIf config.plugins.telescope.enable [
