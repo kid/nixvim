@@ -45,7 +45,7 @@
     LspAttach = [
       {
         mode = "n";
-        key = "<leader>ld";
+        key = "<leader>ll";
         action = "<cmd>Lspsaga show_line_diagnostics<CR>";
         options = {
           desc = "Show line diagnostics";
