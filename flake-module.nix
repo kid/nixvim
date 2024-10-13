@@ -13,6 +13,10 @@ in
           programs.nixvim = nixvimConfig;
         };
     };
+
+    githubActions = inputs.nix-github-actions.lib.mkGithubMatrix {
+      checks = self.packages;
+    };
   };
 
   perSystem =
