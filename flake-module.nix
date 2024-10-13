@@ -1,4 +1,9 @@
-{ inputs, self, ... }:
+{
+  inputs,
+  lib,
+  self,
+  ...
+}:
 let
   inherit (inputs) nixvim;
   nixvimConfig = import ./config self;
@@ -12,6 +17,13 @@ in
         {
           programs.nixvim = nixvimConfig;
         };
+    };
+
+    githubActions = inputs.nix-github-actions.lib.mkGithubMatrix {
+      checks = lib.getAttrs [
+        "x86_64-linux"
+        "aarch64-darwin"
+      ] self.checks;
     };
   };
 
