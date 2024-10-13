@@ -3,7 +3,7 @@
   plugins = {
     lsp.servers = {
       eslint.enable = true;
-      ts-ls.enable = true;
+      ts_ls.enable = true;
     };
 
     none-ls.sources = lib.mkIf config.plugins.none-ls.enable {
