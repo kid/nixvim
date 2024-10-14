@@ -6,7 +6,7 @@
       enable = true;
     };
     ui = {
-      border = "solid"; # One of none, single, double, rounded, solid, shadow
+      border = "rounded"; # One of none, single, double, rounded, solid, shadow
       codeAction = "💡"; # Can be any symbol you want 💡
     };
     hover = {
