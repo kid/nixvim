@@ -43,20 +43,14 @@
       nerd_font_variant = 'mono',
     })
 
-    -- # FIXME: attempt to index global 'ev' (a nil value)
-    -- ev.on_load('copilot', function()
-    --   vim.schedule(function() 
-    --     local cmp = require('blink.cmp')
+    -- TODO: waiting for https://github.com/Saghen/blink.cmp/pull/98
+    -- cmp.on_open(function()
+    --   require('copilot.suggestion').dismiss()
+    --   vim.api.nvim_buf_set_var(0, 'copilot_suggestion_hidden', true)
+    -- end)
     --
-    --     cmp.on_show(function()
-    --       require('copilot').dismiss()
-    --       vim.api.nvim_buf_set_var(0, 'copilot_suggestion_hidden', true)
-    --     end)
-    --
-    --     cmp.on_hide(function()
-    --       vim.api.nvim_buf_set_var(0, 'copilot_suggestion_hidden', false)
-    --     end)
-    --   end)
+    -- cmp.on_close(function()
+    --   vim.api.nvim_buf_set_var(0, 'copilot_suggestion_hidden', false)
     -- end)
   '';
 }
