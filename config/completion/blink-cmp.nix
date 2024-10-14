@@ -8,12 +8,8 @@
   ];
 
   extraConfigLua = ''
-    require("blink.cmp").setup({
-      trigger = { 
-        signature_help = { 
-          enabled = true 
-        }, 
-      },
+    local cmp = require("blink.cmp")
+    cmp.setup({
       keymap = {
         accept = '<C-y>',
         -- NOTE: by default theses also incpude <Up> and <Down>, which then prevents from navigating Telescope's results
