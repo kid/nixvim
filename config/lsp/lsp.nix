@@ -26,6 +26,10 @@
             action = "type_definition";
             desc = "Go to type definition";
           };
+          # "<leader>lr" = {
+          #   action = "rename";
+          #   desc = "Rename";
+          # };
         }
         // lib.mkIf (!config.plugins.lspsaga.enable) {
           "<leader>la" = {
@@ -50,6 +54,19 @@
       };
     };
   };
+
+  # FIXME: figure out why this does not work when set in `plugins.lsp.keymaps.lspBuf`
+  keymapsOnEvents.LspAttach = [
+    {
+      mode = "n";
+      key = "<leader>lr";
+      action = "<cmd>lua vim.lsp.buf.rename()<CR>";
+      options = {
+        desc = "Rename";
+        silent = true;
+      };
+    }
+  ];
 
   diagnostics = {
     virtual_text.prefix = "";
