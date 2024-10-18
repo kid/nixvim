@@ -10,22 +10,22 @@
     keymaps = {
       lspBuf =
         {
-          "gd" = {
-            action = "definition";
-            desc = "Go to definition";
-          };
-          "gD" = {
-            action = "references";
-            desc = "Go to references";
-          };
-          "gi" = {
-            action = "implementation";
-            desc = "Go to implementation";
-          };
-          "gt" = {
-            action = "type_definition";
-            desc = "Go to type definition";
-          };
+          # "gd" = {
+          #   action = "definition";
+          #   desc = "Go to definition";
+          # };
+          # "gD" = {
+          #   action = "references";
+          #   desc = "Go to references";
+          # };
+          # "gi" = {
+          #   action = "implementation";
+          #   desc = "Go to implementation";
+          # };
+          # "gt" = {
+          #   action = "type_definition";
+          #   desc = "Go to type definition";
+          # };
           # "<leader>lr" = {
           #   action = "rename";
           #   desc = "Rename";
@@ -65,6 +65,26 @@
         desc = "Rename";
         silent = true;
       };
+    }
+    {
+      key = "gd";
+      action = "<cmd>lua vim.lsp.buf.definition()<cr>";
+      options.desc = "Go to definition";
+    }
+    {
+      key = "gD";
+      action = "<cmd>lua vim.lsp.buf.references()<cr>";
+      options.desc = "Go to references";
+    }
+    {
+      key = "gi";
+      action = "<cmd>lua vim.lsp.buf.implementation()";
+      options.desc = "Go to implementation";
+    }
+    {
+      key = "gt";
+      action = "<cmd>lua vim.lsp.buf.type_definition()";
+      options.desc = "Go to type definition";
     }
   ];
 
