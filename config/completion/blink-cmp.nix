@@ -12,6 +12,8 @@
     cmp.setup({
       keymap = {
         accept = '<C-y>',
+        snippet_forward = '<C-j>',
+        snippet_backward = '<C-k>',
         -- NOTE: by default theses also incpude <Up> and <Down>, which then prevents from navigating Telescope's results
         select_prev = '<C-p>',
         select_next = '<C-n>',
