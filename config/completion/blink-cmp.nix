@@ -40,7 +40,7 @@
           auto_show = true,
         },
       },
-      nerd_font_variant = 'mono',
+      -- nerd_font_variant = 'mono',
     })
 
     -- TODO: waiting for https://github.com/Saghen/blink.cmp/pull/98
