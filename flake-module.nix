@@ -22,9 +22,9 @@ in
       nixvim' = nixvim.legacyPackages.${system};
       nixvimModule = {
         inherit pkgs;
-        # module = importApply ./config { localFlake = self; };
-        # module = (importApply ./config { });
+
         module = nixvimConfig;
+
         extraSpecialArgs = {
           inherit inputs;
         };
