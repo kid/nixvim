@@ -32,6 +32,7 @@ self:
     ./coding/go.nix
     ./coding/nix.nix
     ./coding/rust.nix
+    ./coding/shell.nix
     ./coding/terraform.nix
 
     ./treesitter.nix
