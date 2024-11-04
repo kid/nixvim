@@ -41,6 +41,7 @@ self:
     ./ui/indent-blankline.nix
     ./ui/neo-tree.nix
     ./ui/noice.nix
+    ./ui/nvim-ufo.nix
     ./ui/flash.nix
     ./ui/smart-splits.nix
     ./ui/telescope.nix
