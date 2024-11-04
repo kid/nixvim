@@ -2,7 +2,7 @@
 {
   plugins.noice = {
     enable = true;
-    lsp = {
+    settings.lsp = {
       signature.enabled = false;
       override = {
         "cmp.entry.get_documentation" = config.plugins.cmp.enable;
