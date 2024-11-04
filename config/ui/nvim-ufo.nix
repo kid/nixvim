@@ -16,4 +16,17 @@
     foldlevelstart = 99;
     foldenable = true;
   };
+
+  keymaps = lib.mkIf config.plugins.nvim-ufo.enable [
+    {
+      mode = "n";
+      key = "<Tab>";
+      action = "za";
+    }
+    {
+      mode = "n";
+      key = "<S-Tab>";
+      action = "zA";
+    }
+  ];
 }
