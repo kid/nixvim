@@ -1,6 +1,6 @@
 { config, lib, ... }:
 {
-  plugins.flash.enable = true;
+  plugins.flash.enable = false;
 
   keymaps = lib.mkIf config.plugins.flash.enable [
     {
