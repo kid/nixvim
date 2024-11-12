@@ -44,6 +44,7 @@ self:
     ./ui/nvim-ufo.nix
     ./ui/flash.nix
     ./ui/smart-splits.nix
+    ./ui/statuscol.nix
     ./ui/telescope.nix
     ./ui/which-key.nix
   ];
@@ -109,6 +110,7 @@ self:
     cmdheight = 0;
 
     cursorline = true;
+    cursorlineopt = "line";
 
     # Avoid jumps on first git change
     signcolumn = "yes";
@@ -116,6 +118,10 @@ self:
     # remove the ~ tilde sign on the end of the file
     fillchars = {
       eob = " ";
+      fold = " ";
+      foldopen = "";
+      foldsep = " ";
+      foldclose = "";
     };
 
     showmode = false;
@@ -133,6 +139,7 @@ self:
 
   colorschemes.base16.enable = lib.mkDefault true;
   colorschemes.base16.colorscheme = lib.mkDefault "gruvbox-dark-medium";
+  colorschemes.base16.settings.telescope_borders = true;
 
   plugins.lualine.enable = true;
   plugins.web-devicons.enable = true;
