@@ -8,7 +8,10 @@
 
     none-ls.sources = lib.mkIf config.plugins.none-ls.enable {
       formatting = {
-        prettierd.enable = true;
+        prettierd = {
+          enable = true;
+          disableTsServerFormatter = true;
+        };
       };
     };
   };

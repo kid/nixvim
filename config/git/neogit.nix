@@ -3,7 +3,11 @@
   plugins.neogit = {
     enable = true;
     settings = {
-      integration.diffview = lib.mkIf config.plugins.diffview.enable true;
+      integrations = {
+        diffview = lib.mkIf config.plugins.diffview.enable true;
+        telescope = lib.mkIf config.plugins.telescope.enable true;
+      };
+      kind = "auto";
       signs =
         let
           signs = [

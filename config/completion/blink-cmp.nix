@@ -35,7 +35,7 @@
       },
       windows = {
         autocomplete = {
-          draw = 'reversed',
+          -- draw = 'reversed',
           min_width = 50,
         },
         documentation = {

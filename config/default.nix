@@ -69,7 +69,6 @@ in
     # Set tabs to 2 spaces
     tabstop = 2;
     softtabstop = 2;
-    showtabline = 2;
     expandtab = true;
 
     # Enable auto indenting and set it to spaces
@@ -128,6 +127,8 @@ in
     };
 
     showmode = false;
+    # Only show tabline if there are at least 2 tabs
+    showtabline = 1;
 
     # Reduce which-key timeout
     timeoutlen = 100;
@@ -151,24 +152,38 @@ in
   highlightOverride = {
     LineNr.fg = helpers.mkRaw "require('base16-colorscheme').colors.base02";
     CursorLineNr.bg = "none";
+    CursorlineSign.fg = helpers.mkRaw "require('base16-colorscheme').colors.base02";
+    SignColumn.fg = helpers.mkRaw "require('base16-colorscheme').colors.base02";
     NeogitCursorLine.bg = "none";
   };
 
-  plugins.lualine.enable = true;
-  plugins.web-devicons.enable = true;
-  # plugins.schemastore = {
-  #   enable = true;
-  #   json.enable = true;
-  #   yaml.enable = true;
-  # };
-  plugins.comment.enable = true;
-  plugins.todo-comments.enable = true;
-  plugins.nvim-surround.enable = true;
-  plugins.nvim-autopairs.enable = true;
-  plugins.dashboard.enable = true;
+  plugins = {
+    lualine = {
+      enable = true;
+      settings = {
+        extensions = [
+          "neo-tree"
+          "trouble"
+        ];
+      };
+    };
+    # plugins.bufferline.enable = true;
 
-  # plugins.notify.enable = true;
-  plugins.helm.enable = true;
-  # TODO: tabout.nvim
-  plugins.better-escape.enable = true;
+    web-devicons.enable = true;
+    # plugins.schemastore = {
+    #   enable = true;
+    #   json.enable = true;
+    #   yaml.enable = true;
+    # };
+    comment.enable = true;
+    todo-comments.enable = true;
+    nvim-surround.enable = true;
+    nvim-autopairs.enable = true;
+    dashboard.enable = true;
+
+    # plugins.notify.enable = true;
+    helm.enable = true;
+    # TODO: tabout.nvim
+    better-escape.enable = true;
+  };
 }
