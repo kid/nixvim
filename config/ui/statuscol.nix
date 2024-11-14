@@ -6,7 +6,12 @@ in
   plugins.statuscol = {
     enable = true;
     settings = {
-      bt_ignore = [ "neo-tree" ];
+      bt_ignore = [
+        "neo-tree"
+      ];
+      ft_ignore = [
+        "DiffviewFiels"
+      ];
       relculright = true;
       segments = [
         {

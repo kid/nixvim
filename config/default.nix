@@ -1,5 +1,8 @@
 self:
 { lib, ... }:
+let
+  helpers = lib.nixvim;
+in
 {
   _module.args = {
     localFlake = self;
@@ -110,7 +113,7 @@ self:
     cmdheight = 0;
 
     cursorline = true;
-    cursorlineopt = "line";
+    cursorlineopt = "number";
 
     # Avoid jumps on first git change
     signcolumn = "yes";
@@ -137,9 +140,19 @@ self:
     mapleader = " ";
   };
 
-  colorschemes.base16.enable = lib.mkDefault true;
-  colorschemes.base16.colorscheme = lib.mkDefault "gruvbox-dark-medium";
-  colorschemes.base16.settings.telescope_borders = true;
+  colorschemes = {
+    base16 = {
+      enable = lib.mkDefault true;
+      colorscheme = lib.mkDefault "gruvbox-dark-medium";
+      settings.telescope_borders = true;
+    };
+  };
+
+  highlightOverride = {
+    LineNr.fg = helpers.mkRaw "require('base16-colorscheme').colors.base02";
+    CursorLineNr.bg = "none";
+    NeogitCursorLine.bg = "none";
+  };
 
   plugins.lualine.enable = true;
   plugins.web-devicons.enable = true;
