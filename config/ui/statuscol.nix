@@ -6,10 +6,8 @@ in
   plugins.statuscol = {
     enable = true;
     settings = {
-      bt_ignore = [
-        "neo-tree"
-      ];
       ft_ignore = [
+        "neo-tree"
         "DiffviewFiels"
       ];
       relculright = true;
