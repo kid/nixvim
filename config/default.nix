@@ -48,6 +48,7 @@ in
     ./ui/flash.nix
     ./ui/smart-splits.nix
     ./ui/statuscol.nix
+    ./ui/stay-centered.nix
     ./ui/telescope.nix
     ./ui/which-key.nix
   ];
