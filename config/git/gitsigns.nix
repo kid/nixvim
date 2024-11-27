@@ -113,6 +113,16 @@ in
     }
     {
       mode = "n";
+      key = "<leader>gR";
+      action = helpers.mkRaw ''
+        function()
+          require('gitsigns').reset_buffer()
+        end
+      '';
+      options.desc = "Reset buffer";
+    }
+    {
+      mode = "n";
       key = "<leader>gu";
       action = helpers.mkRaw ''
         function()
