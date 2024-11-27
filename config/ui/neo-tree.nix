@@ -1,4 +1,7 @@
 { config, lib, ... }:
+let
+  helpers = lib.nixvim;
+in
 {
   plugins.neo-tree = {
     enable = true;
@@ -15,4 +18,11 @@
       action = "<cmd>Neotree toggle<cr>";
     }
   ];
+
+  highlightOverride = lib.mkIf config.plugins.neo-tree.enable {
+    NeoTreeGitModified = {
+      fg = helpers.mkRaw "require('base16-colorscheme').colors.base0D";
+      bg = "none";
+    };
+  };
 }
