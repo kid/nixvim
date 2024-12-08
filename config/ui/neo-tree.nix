@@ -12,6 +12,9 @@ in
       };
       filteredItems = {
         hideDotfiles = false;
+        hideByPattern = [
+          ".git"
+        ];
       };
     };
   };
