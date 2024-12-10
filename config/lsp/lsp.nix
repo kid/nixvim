@@ -78,12 +78,12 @@
     }
     {
       key = "gi";
-      action = "<cmd>lua vim.lsp.buf.implementation()";
+      action = "<cmd>lua vim.lsp.buf.implementation()<cr>";
       options.desc = "Go to implementation";
     }
     {
       key = "gt";
-      action = "<cmd>lua vim.lsp.buf.type_definition()";
+      action = "<cmd>lua vim.lsp.buf.type_definition()<cr>";
       options.desc = "Go to type definition";
     }
   ];
