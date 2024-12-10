@@ -180,7 +180,7 @@ in
     todo-comments.enable = true;
     nvim-surround.enable = true;
     nvim-autopairs.enable = true;
-    dashboard.enable = true;
+    # dashboard.enable = true;
 
     # plugins.notify.enable = true;
     helm.enable = true;
