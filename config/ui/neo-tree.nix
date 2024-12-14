@@ -36,5 +36,9 @@ in
       fg = helpers.mkRaw "require('base16-colorscheme').colors.base0D";
       bg = "none";
     };
+    NeoTreeGitDeleted = {
+      fg = helpers.mkRaw "require('base16-colorscheme').colors.base08";
+      bg = "none";
+    };
   };
 }
