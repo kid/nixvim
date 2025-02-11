@@ -1,10 +1,10 @@
-{ lib, ... }:
+{ lib, config, ... }:
 let
   helpers = lib.nixvim;
 in
 {
   plugins.statuscol = {
-    enable = true;
+    enable = !config.plugins.snacks.settings.statuscolumn.enabled;
     settings = {
       ft_ignore = [
         "neo-tree"

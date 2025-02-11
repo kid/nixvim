@@ -47,6 +47,7 @@ in
     ./ui/nvim-ufo.nix
     ./ui/flash.nix
     ./ui/smart-splits.nix
+    ./ui/snacks.nix
     ./ui/statuscol.nix
     # ./ui/stay-centered.nix
     ./ui/telescope.nix
