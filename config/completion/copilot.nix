@@ -2,9 +2,9 @@
 {
   plugins.copilot-lua = {
     enable = true;
-    panel.enabled = false;
     settings.suggestion = {
       enabled = !config.plugins.cmp.enable;
+      panel.enabled = false;
       autoTrigger = !config.plugins.cmp.enable;
     };
   };
