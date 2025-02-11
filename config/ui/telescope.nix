@@ -1,7 +1,7 @@
 { config, lib, ... }:
 {
   plugins.telescope = {
-    enable = true;
+    enable = !config.plugins.snacks.enable;
     extensions = {
       file-browser = {
         enable = true;
