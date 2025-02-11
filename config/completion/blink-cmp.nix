@@ -11,7 +11,7 @@
         };
       };
       signature = {
-        enable = true;
+        enabled = true;
       };
     };
   };
