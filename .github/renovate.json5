@@ -8,5 +8,8 @@
   },
   lockFileMaintenance: {
     enabled: true
+    schedule: [
+      "* 16-18 * * *"
+    ]
   }
 }
