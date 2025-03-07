@@ -24,13 +24,6 @@ in
       };
     };
 
-    githubActions = inputs.nix-github-actions.lib.mkGithubMatrix {
-      checks = lib.getAttrs [
-        "x86_64-linux"
-        "aarch64-darwin"
-      ] self.checks;
-    };
-
     herculesCI.ciSystems = [ "x86_64-linux" ];
   };
 
