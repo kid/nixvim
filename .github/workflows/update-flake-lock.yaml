@@ -10,6 +10,10 @@ jobs:
       BRANCH: chore/update-flake-lock
 
     runs-on: ubuntu-latest
+
+    # outputs:
+    #   result: ${{ steps.update-flake.outputs.result }}
+
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
@@ -85,4 +89,4 @@ jobs:
           fi
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          PR_BODY: ${{ join(steps.update-flake.outputs.*, '\n') }}
+          PR_BODY: ${{ steps.update-flake.outputs.result }}
