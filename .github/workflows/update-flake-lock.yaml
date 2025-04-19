@@ -35,16 +35,13 @@ jobs:
       - name: Update flake.lock
         id: update-flake
         run: |
-          # nix flake update | tee stdout.txt
-          # {
-          #   echo "result<<EOF"
-          #   echo "Result:"
-          #   echo "$(cat stdout.txt)"
-          #   echo "EOF"
-          # } >> $GITHUB_OUTPUT
-          echo "result<<EOF" >> $GITHUB_OUTPUT
-          nix flake update | tee -a $GITHUB_OUTPUT
-          echo EOF >> $GITHUB_OUTPUT
+          {
+            echo 'result<<EOF'
+            echo '```'
+            nix flake update
+            echo '```'
+            echo 'EOF'
+          } >> $GITHUB_OUTPUT
 
       - name: Commit changes
         run: |
