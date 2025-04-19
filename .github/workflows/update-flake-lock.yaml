@@ -38,6 +38,7 @@ jobs:
           nix flake update | tee stdout.txt
           {
             echo "result<<EOF"
+            echo "Result:"
             echo "$(cat stdout.txt)"
             echo "EOF"
           } >> $GITHUB_OUTPUT
