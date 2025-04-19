@@ -10,6 +10,10 @@ jobs:
       BRANCH: chore/update-flake-lock
 
     runs-on: ubuntu-latest
+
+    # outputs:
+    #   result: ${{ steps.update-flake.outputs.result }}
+
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
@@ -29,9 +33,15 @@ jobs:
           git push -u origin $BRANCH --force
 
       - name: Update flake.lock
+        id: update-flake
         run: |
-          nix flake update | tee flake-update-output.txt
-          echo "::set-output name=body::$(cat flake-update-output.txt)"
+          output=$(nix flake update 2>&1)
+          echo "$output"
+          {
+            echo "result<<EOF"
+            echo "$output"
+            echo "EOF"
+          } >> $GITHUB_OUTPUT
 
       - name: Commit changes
         run: |
@@ -62,18 +72,25 @@ jobs:
 
           set -euo pipefail
 
-          PR_EXISTS=$(gh pr list --head "$BRANCH" --json number -q '.[0].number')
+          echo "Body:"
+          echo "${PR_BODY}"
 
-          if [ -z "$PR_EXISTS" ]; then
+          PR_ID=$(gh pr list --head "$BRANCH" --json number -q '.[0].number')
+
+          if [ -z "$PR_ID" ]; then
             git reset --hard "$GITHUB_REF"
             git pull
             gh pr create \
               --title "chore: update flake.lock" \
-              --body "${{ steps.update-flake.outputs.body }}" \
+              --body "${PR_BODY}" \
               --base "${GITHUB_REF}" \
               --head "${BRANCH}"
           else
-            echo "Pull request already exists: #$PR_EXISTS"
+            gh pr update "$PR_ID" --body "${PR_BODY}"
           fi
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          PR_BODY: |
+            ```
+            ${{ steps.update-flake.outputs.result }}
+            ```
