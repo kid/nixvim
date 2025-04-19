@@ -37,11 +37,9 @@ jobs:
         run: |
           output=$(nix flake update 2>&1)
           {
-            echo 'result<<EOF'
-            echo '```'
-            echo '$output'
-            echo '```'
-            echo 'EOF'
+            echo "result<<EOF"
+            echo "$output"
+            echo "EOF"
           } >> $GITHUB_OUTPUT
 
       - name: Commit changes
