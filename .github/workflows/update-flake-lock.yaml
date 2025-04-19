@@ -35,10 +35,11 @@ jobs:
       - name: Update flake.lock
         id: update-flake
         run: |
+          output=$(nix flake update 2>&1)
           {
             echo 'result<<EOF'
             echo '```'
-            nix flake update
+            echo '$output'
             echo '```'
             echo 'EOF'
           } >> $GITHUB_OUTPUT
