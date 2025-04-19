@@ -31,9 +31,11 @@ jobs:
       - name: Update flake.lock
         id: update-flake
         run: |
-          echo 'stdout<<EOF' >> $GITHUB_OUTPUT
-          nix flake update | tee $GITHUB_OUTPUT
-          echo 'EOF' >> $GITHUB_OUTPUT
+          {
+            echo 'result<<EOF'
+            nix flake update | tee $GITHUB_OUTPUT
+            echo 'EOF'
+          } >> $GITHUB_OUTPUT
 
       - name: Commit changes
         run: |
@@ -82,4 +84,4 @@ jobs:
           fi
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          PR_BODY: ${{ join(steps.update-flake.outputs.stdout, '\n') }}
+          PR_BODY: ${{ join(steps.update-flake.outputs.*, '\n') }}
