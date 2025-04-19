@@ -36,6 +36,7 @@ jobs:
         id: update-flake
         run: |
           output=$(nix flake update 2>&1)
+          echo "$output"
           {
             echo "result<<EOF"
             echo "$output"
