@@ -31,7 +31,9 @@ jobs:
       - name: Update flake.lock
         id: update-flake
         run: |
+          echo 'stdout<<EOF' >> $GITHUB_OUTPUT
           nix flake update | tee $GITHUB_OUTPUT
+          echo 'EOF' >> $GITHUB_OUTPUT
 
       - name: Commit changes
         run: |
@@ -62,9 +64,12 @@ jobs:
 
           set -euo pipefail
 
-          PR_EXISTS=$(gh pr list --head "$BRANCH" --json number -q '.[0].number')
+          echo "Body:"
+          echo "${PR_BODY}"
 
-          if [ -z "$PR_EXISTS" ]; then
+          PR_ID=$(gh pr list --head "$BRANCH" --json number -q '.[0].number')
+
+          if [ -z "$PR_ID" ]; then
             git reset --hard "$GITHUB_REF"
             git pull
             gh pr create \
@@ -73,8 +78,8 @@ jobs:
               --base "${GITHUB_REF}" \
               --head "${BRANCH}"
           else
-            echo "Pull request already exists: #$PR_EXISTS"
+            gh pr update "$PR_ID" --body "${PR_BODY}"
           fi
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          PR_BODY: ${{ join(steps.update-flake.outputs.*, '\n') }}
+          PR_BODY: ${{ join(steps.update-flake.outputs.stdout, '\n') }}
