@@ -29,9 +29,9 @@ jobs:
           git push -u origin $BRANCH --force
 
       - name: Update flake.lock
+        id: update-flake
         run: |
-          nix flake update | tee flake-update-output.txt
-          echo "::set-output name=body::$(cat flake-update-output.txt)"
+          nix flake update | tee $GITHUB_OUTPUT
 
       - name: Commit changes
         run: |
@@ -69,7 +69,7 @@ jobs:
             git pull
             gh pr create \
               --title "chore: update flake.lock" \
-              --body "${{ steps.update-flake.outputs.body }}" \
+              --body "${PR_BODY}" \
               --base "${GITHUB_REF}" \
               --head "${BRANCH}"
           else
@@ -77,3 +77,4 @@ jobs:
           fi
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          PR_BODY: ${{ join(steps.update-flake.outputs.*, '\n') }}
