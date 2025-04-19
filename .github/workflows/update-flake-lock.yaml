@@ -11,9 +11,6 @@ jobs:
 
     runs-on: ubuntu-latest
 
-    # outputs:
-    #   result: ${{ steps.update-flake.outputs.result }}
-
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
@@ -35,15 +32,24 @@ jobs:
       - name: Update flake.lock
         id: update-flake
         run: |
-          output=$(nix flake update 2>&1)
-          echo "$output"
-          {
-            echo "result<<EOF"
-            echo "$output"
-            echo "EOF"
-          } >> $GITHUB_OUTPUT
+          echo "result<<EOF" >> $GITHUB_OUTPUT
+          nix flake update 2>&1 | tee -a $GITHUB_OUTPUT
+          echo "EOF" >> $GITHUB_OUTPUT
+
+      - name: Check for changes
+        id: check-changes
+        run: |
+          CHANGED=$(git status --porcelain)
+          if [ -z "$CHANGED" ]; then
+            echo "No changes detected."
+            echo "changes=false" >> $GITHUB_ENV
+          else
+            echo "Changes detected."
+            echo "changes=true" >> $GITHUB_ENV
+          fi
 
       - name: Commit changes
+        if: env.changes == 'true'
         run: |
           #!/usr/bin/env bash
 
@@ -67,13 +73,11 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Create pull request if not exists
+        if: env.changes == 'true'
         run: |
           #!/usr/bin/env bash
 
           set -euo pipefail
-
-          echo "Body:"
-          echo "${PR_BODY}"
 
           PR_ID=$(gh pr list --head "$BRANCH" --json number -q '.[0].number')
 
