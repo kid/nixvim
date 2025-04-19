@@ -10,7 +10,7 @@ let
 in
 {
   flake = {
-    homeManagerModules = {
+    homeModules = {
       inherit (inputs.nixvim.homeManagerModules) nixvim;
       config = _: {
         programs.nixvim = nixvimConfig;

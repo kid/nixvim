@@ -14,7 +14,7 @@
   outputs =
     { flake-parts, ... }@inputs:
     flake-parts.lib.mkFlake { inherit inputs; } {
-      debug = true;
+      # debug = true;
 
       systems = inputs.nixpkgs.lib.systems.flakeExposed;
 
