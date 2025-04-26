@@ -4,7 +4,7 @@ let
 in
 {
   plugins.neo-tree = {
-    enable = true;
+    enable = false;
     filesystem = {
       followCurrentFile = {
         enabled = true;

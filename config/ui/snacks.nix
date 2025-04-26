@@ -6,6 +6,7 @@ in
   plugins.snacks = {
     enable = true;
     settings = {
+      explorer.enabled = true;
       indent.enabled = true;
       statuscolumn.enabled = true;
       # TODO: need configuration
@@ -15,6 +16,12 @@ in
   };
 
   keymaps = lib.mkIf config.plugins.snacks.enable [
+    {
+      mode = "n";
+      key = "<leader>e";
+      action = helpers.mkRaw "function() Snacks.explorer.open() end";
+      options.desc = "Open explorer";
+    }
     # Top pickers
     {
       mode = "n";
