@@ -88,7 +88,7 @@
     }
   ];
 
-  diagnostic.config = {
+  diagnostic.settings = {
     virtual_text.prefix = "";
     signs.text = [
       "󰅙"
