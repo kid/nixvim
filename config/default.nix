@@ -13,10 +13,11 @@ in
     ./keys.nix
     ./autocommands.nix
 
+    ./completion/avante.nix
     ./completion/blink-cmp.nix
-    ./completion/friendly-snippets.nix
     ./completion/cmp.nix
     ./completion/copilot.nix
+    ./completion/friendly-snippets.nix
     ./completion/friendly-snippets.nix
     ./completion/lspkind.nix
     ./completion/luasnip.nix
