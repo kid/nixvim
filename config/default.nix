@@ -16,6 +16,7 @@ in
     ./completion/blink-cmp.nix
     ./completion/friendly-snippets.nix
     ./completion/cmp.nix
+    ./completion/codecompanion.nix
     ./completion/copilot.nix
     ./completion/friendly-snippets.nix
     ./completion/lspkind.nix
