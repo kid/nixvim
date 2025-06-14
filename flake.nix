@@ -12,7 +12,10 @@
     flake-parts.lib.mkFlake { inherit inputs; } {
       # debug = true;
 
-      systems = inputs.nixpkgs.lib.systems.flakeExposed;
+      systems = [
+        "x86_64-linux"
+        "aarch64-darwin"
+      ];
 
       imports = [
         ./flake-module.nix
