@@ -1,13 +1,15 @@
 { config, ... }:
 {
   plugins.lspkind = {
-    enable = config.plugins.cmp.enable;
-    cmp = {
-      enable = true;
-      maxWidth = 50;
-    };
-    symbolMap = {
-      Copilot = "";
+    inherit (config.plugins.cmp) enable;
+    settings = {
+      cmp = {
+        enable = true;
+        max_width = 50;
+      };
+      symbol_map = {
+        Copilot = "";
+      };
     };
   };
 }
