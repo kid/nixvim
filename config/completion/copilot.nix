@@ -10,6 +10,6 @@
   };
 
   plugins.copilot-cmp = {
-    enable = config.plugins.cmp.enable;
+    inherit (config.plugins.cmp) enable;
   };
 }
