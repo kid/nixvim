@@ -12,6 +12,10 @@ in
       # TODO: need configuration
       toggle.enabled = true;
       styles.float.backdrop = false;
+      picker = {
+        enabled = true;
+        ui_select = true;
+      };
     };
   };
 
