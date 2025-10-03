@@ -18,7 +18,7 @@
       ];
 
       imports = [
-        ./flake-module.nix
+        ./nixvim.nix
       ];
     };
 }
