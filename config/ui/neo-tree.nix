@@ -5,16 +5,18 @@ in
 {
   plugins.neo-tree = {
     enable = false;
-    filesystem = {
-      followCurrentFile = {
-        enabled = true;
-        leaveDirsOpen = true;
-      };
-      filteredItems = {
-        hideDotfiles = false;
-        hideByPattern = [
-          ".git"
-        ];
+    settings = {
+      filesystem = {
+        followCurrentFile = {
+          enabled = true;
+          leaveDirsOpen = true;
+        };
+        filteredItems = {
+          hideDotfiles = false;
+          hideByPattern = [
+            ".git"
+          ];
+        };
       };
     };
   };
