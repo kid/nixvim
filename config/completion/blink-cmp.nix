@@ -7,8 +7,38 @@ in
     blink-cmp = {
       enable = true;
       settings = {
-        sources.per_filetype.codecompanion = [ "codecompanion" ];
-
+        sources = {
+          default = [
+            "lsp"
+            "path"
+            "snippets"
+            "buffer"
+            "avante_commands"
+            "avante_files"
+            "avante_mentions"
+          ];
+          providers = {
+            avante_commands = {
+              name = "avante_commands";
+              module = "blink.compat.source";
+              score_offset = 90;
+              opts = { };
+            };
+            avante_files = {
+              name = "avante_files";
+              module = "blink.compat.source";
+              score_offset = 100;
+              opts = { };
+            };
+            avante_mentions = {
+              name = "avante_mentions";
+              module = "blink.compat.source";
+              score_offset = 1000;
+              opts = { };
+            };
+          };
+          per_filetype.codecompanion = [ "codecompanion" ];
+        };
         completion = {
           documentation = {
             auto_show = true;
@@ -45,6 +75,8 @@ in
         };
       };
     };
+
+    blink-compat.enable = true;
 
     colorful-menu.enable = true;
   };
